@@ -1,0 +1,64 @@
+---
+title       : Estimating New Vehicle MPG
+subtitle    : 
+author      : A. Austin
+job         : Course 9
+framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
+highlighter : highlight.js  # {highlight.js, prettify, highlight}
+hitheme     : tomorrow      # 
+widgets     : []            # {mathjax, quiz, bootstrap}
+mode        : selfcontained # {standalone, draft}
+knit        : slidify::knit2slides
+---
+
+## Why do I want this?
+
+You're shopping for a new car - congratulations! 
+
+Savvy buyers such as yourself are interested in the total-cost-of-ownership of a vehicle and a primary recurring cost is fuel. 
+
+This simple calculator will help you anticipate the fuel economy of your new vehicle*!
+  
+<br><br><br><br><br><br><br><br>
+  
+ *Not really
+
+--- .class #id 
+
+## What does it do?
+
+The calculator allows you to input your vehicles weight and the number of cylinders, then shows you the expected MPG - it's that easy!
+
+UI Features
+
+1. A graph of known vehicles and their cylinder-to-mpg ratio, along with the regression line of the model used to estimate your MPG.
+2. The ability to estimate your vehicles MPG in respect to cylinders or not
+3. A user-friendly slider to input the expected weight of your vehicle, in tons.
+
+--- .class #id 
+
+## How does it work?
+
+1. The calculator uses the 'mtcars' dataset packaged with R and creates dataset views based on the cylinder input.
+2. When you change the weight or cylinders, the dataset is refreshed, a new regression model is created, and a new prediction is returned.
+3. Because of some complications with the predict function caching values, we calculate expected MPG by extracting the intercept and coef from the model, then performing the calculation:
+
+```{r} 
+## NOT real values
+intercept <- 30
+wtCoef <- -5
+inputWeight <- 2
+expectedMPG <- intercept + wtCoef * inputWeight
+```
+
+In this, the expectedMPG of your car would be `r expectedMPG` mpg.
+
+--- .class #id 
+
+## Where can I get it?
+
+This very advanced calculator is offered free of charge from the Shiny.io website:
+
+  https://oombadness.shinyapps.io/course9
+
+Enjoy!
